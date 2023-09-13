@@ -1,0 +1,138 @@
+h1,h2,h3,h4,h5,h6{
+    font-family: "Nunito Sans", sans-serif;
+    letter-spacing: 2px;
+}
+
+.welcome-heading{
+    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+}
+
+p{
+    font-family: "Nunito Sans", sans-serif;
+}
+.color-orange{
+    color: #DD9918;
+}
+
+.blog-header-logo{
+    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+    font-size: 2.25rem;
+    color: #DD9918 !important;
+}
+
+
+.bg-body-banner{
+    background-image: url('../img/friesar-2UpecTlzEsg-unsplash.jpg');
+    background-size: cover;
+    height: 35rem;
+}
+
+li .nav-link{
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: 100;
+}
+li .nav-link:hover{
+    color: #DD9918 !important;
+}
+
+.img-holder{
+    width: 100%;
+    height: 500px;
+}
+
+.img-holder img{
+    max-width: 100%;
+    max-height: 100%;
+    aspect-ratio: 22/10;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+}
+
+.lead{
+    font-size: 18px;
+}
+
+.link-news:hover{
+    color: #4d4747;
+}
+
+@media screen and (min-width:1440px) and (max-width:2560px){
+    .offset-md-1{
+        margin-left: 0 !important;
+    }
+}
+
+@media screen and (min-width:1024px) and (max-width:1439px) {
+    .img-destinasi{
+        width: 230px;
+    }
+
+    .content-description{
+        padding-left: 50px;
+    }
+
+    .offset-md-1{
+        margin-left: 0 !important;
+    }
+}
+
+@media screen and (min-width:768px) and (max-width: 1023px) {
+    #beranda {
+        text-align: center;
+    }
+    .img-holder{
+        margin-bottom: -8rem!important;
+    }
+    .destinasi-gallery{
+        margin-top: 10%;
+    }
+    .img-destinasi{
+        width: 100%;
+        height: 500px;
+    }
+    .img-content{
+        width: 85%;
+    }
+    .content-description{
+        margin-top: 10px;
+        width: 85%;
+    }
+}
+
+@media screen and (min-width:320px) and (max-width: 767px) {
+    .search{
+        display: none !important;
+    }
+    .blog-header-logo{
+        display: none;
+    }
+    .logo{
+        width: 280px !important;
+        align-self: center;
+    }
+    #beranda {
+        text-align: center;
+    }
+    .img-holder{
+        margin-bottom: -20rem!important;
+    }
+    .event-upcoming .h4{
+        padding-top: 20px;
+    }
+    .destinasi-gallery{
+        margin-top: 10%;
+    }
+    .img-content{
+        width: 100%;
+    }
+    .content-description{
+        margin-top: 10px;
+        width: 100%;
+        text-align: justify;
+    }
+    .copyright{
+        text-align: left;
+        width: 100%;
+    }
+}
