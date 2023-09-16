@@ -106,24 +106,42 @@
         }
 
         listPendaftar(){
-          const tbody   = document.getElementById('daftarPendaftar')   
-          for (let i = 0; i < data.length; i++) {
-            const tr  = document.createElement('tr')
-            for (let j = 0; j < data[i].length; j++) {
-              let td  = document.createElement('td')
-              let valueTr = document.createTextNode(data[i][j])
-              td.appendChild(valueTr)
-              tr.appendChild(td)
+          const tbody   = document.getElementById('daftarPendaftar')
+          if (data.length > 1) {
+            for (let i = 1; i < data.length; i++) {
+              const tr  = document.createElement('tr')
+              for (let j = 0; j < data[i].length; j++) {
+                let td  = document.createElement('td')
+                let valueTr = document.createTextNode(data[i][j])
+                td.appendChild(valueTr)
+                tr.appendChild(td)
+              }
+              tbody.appendChild(tr)
             }
-            tbody.appendChild(tr)
+          }else{
+            for (let i = 0; i < data.length; i++) {
+              const tr  = document.createElement('tr')
+              for (let j = 0; j < data[i].length; j++) {
+                let td  = document.createElement('td')
+                let valueTr = document.createTextNode(data[i][j])
+                td.appendChild(valueTr)
+                tr.appendChild(td)
+              }
+              tbody.appendChild(tr)
+            }
           }
         }
 
         resume(call1,call2){
             let b = document.getElementById('resume')
             let kesimpulan = document.createElement('p')
+          if (data.length > 1) {
+            kesimpulan.textContent ="Kesimpulannya Rata rata pendaftar memiliki uang sangu sebesar "+ call1() + " dengan rata rata umur " + call2()
+            b.appendChild(kesimpulan)
+          }else{
             kesimpulan.textContent = "Kesimpulannya Rata rata pendaftar memiliki uang sangu sebesar "+ call1() + " dengan rata rata umur " + call2()
             b.appendChild(kesimpulan)
+          }
         }
     }
 
@@ -148,9 +166,21 @@
       const notify = () => {
             let a = document.getElementById('alert')
             let notif = document.createElement('div')
-            notif.classList.add('alert','alert-primary')
+            notif.classList.add('alert','alert-primary','alert-dismissible','fade','show')
+            notif.setAttribute('role','alert')
             notif.textContent = "Sudah registrasi silahkan dicek"
+
+            let button = document.createElement('button')
+            button.setAttribute('type','button')
+            button.setAttribute('data-bs-dismiss','alert')
+            button.setAttribute('aria-label','Close')
+            button.classList.add('btn-close')
             a.appendChild(notif)
+            .appendChild(button)
+
+            document.getElementById('alertNama').innerHTML = ""
+              document.getElementById('alertUmur').innerHTML = ""
+              document.getElementById('alertSangu').innerHTML = ""
           }
 
       let pendaftar = new Pendaftar();
