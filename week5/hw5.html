@@ -23,31 +23,36 @@
             <div class="card-body">
                 <div class="tab-content m-3">
                     <div class="tab-pane fade show active" id="registrasi">
+                      <div id="alert">
+                      </div>
                         <h5 class="card-title">Form Registrasi</h5>
                         <p style="font-size: 12px;" class="text-danger">Harap semua input diisi</p>
-                        <form>
+                          <div id="form">
                             <div class="mb-3 row">
-                                <label for="inputNama" class="col-sm-2 col-form-label">Nama</label>
+                                <label class="col-sm-2 col-form-label">Nama</label>
                                 <div class="col-sm-10">
-                                  <input type="text" id="nama" class="form-control" id="inputNama" required>
+                                  <input type="text" class="form-control" id="nama" required minlength="10">
+                                  <span id="alertNama" class="text-danger" style="font-size: 12px;"></span>
                                 </div>
                               </div>
                               <div class="mb-3 row">
-                                <label for="inputUmur" class="col-sm-2 col-form-label">Umur</label>
+                                <label class="col-sm-2 col-form-label">Umur</label>
                                 <div class="col-sm-10">
-                                  <input type="number" id="umur" class="form-control" id="inputUmur" required>
+                                  <input type="number" class="form-control" id="umur" required min="25">
+                                  <span id="alertUmur" class="text-danger" style="font-size: 12px;"></span>
                                 </div>
                               </div>
                               <div class="mb-3 row">
-                                <label for="inputSangu" class="col-sm-2 col-form-label">Sangu</label>
+                                <label class="col-sm-2 col-form-label">Sangu</label>
                                 <div class="col-sm-10">
-                                  <input type="number" id="sangu" class="form-control" id="inputSangu" required>
+                                  <input type="number" class="form-control" id="sangu" required min="10000" max="1000000">
+                                  <span id="alertSangu" class="text-danger" style="font-size: 12px;"></span>
                                 </div>
                               </div>
                               <div class="d-grid gap-2">
                                 <button class="btn btn-primary" onclick="daftarBtn()">Daftar</button>
                               </div>
-                        </form>
+                            </div>
                     </div>
                     <div class="tab-pane fade" id="list">
                         <h5 class="card-title">Data Registrasi</h5>
@@ -55,30 +60,113 @@
                         <table class="table table-striped">
                             <thead>
                               <tr>
-                                <th scope="col">#</th>
                                 <th scope="col">Nama</th>
                                 <th scope="col">Umur</th>
                                 <th scope="col">Sangu</th>
                               </tr>
                             </thead>
-                            <tbody>
-                              <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                              </tr>
+                            <tbody id="daftarPendaftar">
                             </tbody>
                           </table>
+
+                          <p id="resume"></p>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
-    
+    <script>
+      let data = [];
+
+      class Pendaftar{
+        
+        insertPendaftar(nama,umur,sangu,callback){
+          if (nama.length >= 10 && umur >=25 && 100000 <= sangu <= 1000000 == true) {
+            data.push([nama,umur,sangu])
+            callback()
+          }else{
+            if (nama.length >= 10 == false) {
+              document.getElementById('alertNama').innerHTML = "Harap lebih dari sama dengan 10 karakter"
+            }else if(umur >=25 == false){
+              document.getElementById('alertUmur').innerHTML = "Umur dibawah 25 tahun"
+            }else if(100000 <= sangu <= 1000000 == false){
+              document.getElementById('alertSangu').innerHTML = "Sangu minimal Rp. 100.000 maksimal Rp. 1.000.000"
+            }else{
+              document.getElementById('alertNama').innerHTML = "Harap lebih dari sama dengan 10 karakter"
+              document.getElementById('alertUmur').innerHTML = "Umur dibawah 25 tahun"
+              document.getElementById('alertSangu').innerHTML = "Sangu minimal Rp. 100.000 maksimal Rp. 1.000.000"
+            }
+          }
+
+        }
+
+        listPendaftar(){
+          const tbody   = document.getElementById('daftarPendaftar')   
+          for (let i = 0; i < data.length; i++) {
+            const tr  = document.createElement('tr')
+            for (let j = 0; j < data[i].length; j++) {
+              let td  = document.createElement('td')
+              let valueTr = document.createTextNode(data[i][j])
+              td.appendChild(valueTr)
+              tr.appendChild(td)
+            }
+            tbody.appendChild(tr)
+          }
+        }
+
+        resume(call1,call2){
+            let b = document.getElementById('resume')
+            let kesimpulan = document.createElement('p')
+            kesimpulan.textContent = "Kesimpulannya Rata rata pendaftar memiliki uang sangu sebesar "+ call1() + " dengan rata rata umur " + call2()
+            b.appendChild(kesimpulan)
+        }
+    }
+
+      const rataSangu = () =>{
+        let totalSangu = parseInt(data[0][2])
+          for (let i = 1; i < data.length; i++) {
+            totalSangu += parseInt(data[i][2])
+          }
+          let avgSangu = totalSangu/data.length
+          return avgSangu
+      }
+
+      const rataUmur = () => {
+        let totalUmur = parseInt(data[0][1])
+          for (let i = 1; i < data.length; i++) {
+            totalUmur += parseInt(data[i][1])
+          }
+          let avgUmur = totalUmur/data.length
+          return avgUmur
+      }
+
+      const notify = () => {
+            let a = document.getElementById('alert')
+            let notif = document.createElement('div')
+            notif.classList.add('alert','alert-primary')
+            notif.textContent = "Sudah registrasi silahkan dicek"
+            a.appendChild(notif)
+          }
+
+      let pendaftar = new Pendaftar();
+      function daftarBtn() {
+        let nama  = document.getElementById('nama').value
+        let umur  = document.getElementById('umur').value
+        let sangu  = document.getElementById('sangu').value
+
+        
+        pendaftar.insertPendaftar(nama,umur,sangu,notify)
+        pendaftar.listPendaftar()
+        pendaftar.resume(rataSangu,rataUmur)
+      }
+      
+      
+
+    </script>
   </body>
 </html>
