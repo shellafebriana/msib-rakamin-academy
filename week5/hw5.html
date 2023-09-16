@@ -135,13 +135,8 @@
         resume(call1,call2){
             let b = document.getElementById('resume')
             let kesimpulan = document.createElement('p')
-          if (data.length > 1) {
-            kesimpulan.textContent ="Kesimpulannya Rata rata pendaftar memiliki uang sangu sebesar "+ call1() + " dengan rata rata umur " + call2()
-            b.appendChild(kesimpulan)
-          }else{
             kesimpulan.textContent = "Kesimpulannya Rata rata pendaftar memiliki uang sangu sebesar "+ call1() + " dengan rata rata umur " + call2()
             b.appendChild(kesimpulan)
-          }
         }
     }
 
