@@ -4,7 +4,7 @@ class MovieController{
     static index(req, res, next){
         Movie.findAll()
             .then( data => {
-                res.render('movie', {
+                res.render('movie/movie', {
                     title : 'Movie',
                     layout : 'layouts/main-layout',
                     data
@@ -37,7 +37,7 @@ class MovieController{
                     error :''
                 })
             }else{
-                res.render('detail', {
+                res.render('movie/detail', {
                     title : 'Detail Movie',
                     layout : 'layouts/main-layout',
                     data
@@ -56,7 +56,28 @@ class MovieController{
     }
 
     static create(req,res,next){
+        const info = {
+            title : req.body.title,
+            genres : req.body.genres,
+            year : req.body.year,
+            createdAt : new Date(),
+            updatedAt : new Date()
+        }
+        Movie.create(info)
+        .then(res.redirect('/movie'))
+        .catch(err => {
+            res.render('error-page', {
+                title : 'Error Page!',
+                layout : 'layouts/main-layout',
+                status : 500,
+                message : 'Something went wrong',
+                error : err
+            })
+        })
+    }
 
+    static delete(req, res, next){
+        
     }
 }
 

@@ -4,6 +4,13 @@ const controller    = require('../controllers/movie')
 
 
 router.get('/', controller.index)
+router.get('/add', (req, res) => {
+    res.render('movie/create', {
+        title : 'Add Movie',
+        layout : 'layouts/main-layout'
+    })
+})
 router.get('/:id', controller.detail)
+router.post('/', controller.create)
 
 module.exports = router

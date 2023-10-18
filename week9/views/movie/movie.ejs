@@ -1,8 +1,9 @@
 <div class="row">
-    <div class="col-sm-10">
+    <div class="col-sm-9 d-inline-flex gap-3">
         <h3>Movie</h3>
+        <a href="/movie/add/" class="btn btn-outline-secondary">Create</a>
     </div>
-    <div class="col-sm-2">
+    <div class="col-sm-3">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/home">Home</a></li>
@@ -23,6 +24,11 @@
       </tr>
     </thead>
     <tbody>
+        <% if (data.length === 0) { %>
+            <tr>
+                <th colspan="5">Data not available.</th>
+            </tr>
+        <% }else{ %>
         <% let i = 1 %>
         <% data.forEach(movie => { %>
             <tr>
@@ -32,10 +38,10 @@
                 <td><%= movie.year %></td>
                 <td>
                     <a href="/movie/<%= movie.id %>" class="btn btn-outline-primary">Detail</a>
-                    <a href="/movie/<%= movie.id %>" class="btn btn-outline-warning">Edit</a>
-                    <a href="/movie/<%= movie.id %>" class="btn btn-outline-danger">Delete</a>
+                    <a href="/movie/edit/<%= movie.id %>" class="btn btn-outline-warning">Edit</a>
+                    <a href="/movie/delete/<%= movie.id %>" class="btn btn-outline-danger">Delete</a>
                 </td>
               </tr>
-        <% }) %>
+        <% })} %>
     </tbody>
   </table>
