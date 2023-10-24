@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="col-sm-9">
+        <h3>Detail Movie</h3>
+    </div>
+    <div class="col-sm-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/home">Home</a></li>
+                <li class="breadcrumb-item"><a href="/movie">Movie</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><%= data.title %></li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<div class="container">
+    <div class="card mt-3">
+        <div class="card-body">
+            <h5 class="card-title"><%= data.title %></h5>
+            <h6 class="card-subtitle mb-2 text-body-secondary"><%= data.year %> | <%= data.genres %></h6>
+            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, laudantium beatae! Quos, officiis dolor unde eveniet distinctio adipisci ut perferendis id? Quis cum quae eos repellat voluptatem facilis incidunt error?</p>
+        </div>
+    </div>
+</div>

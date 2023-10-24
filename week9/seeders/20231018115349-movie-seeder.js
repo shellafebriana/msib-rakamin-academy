@@ -32,6 +32,41 @@ module.exports = {
         createdAt : new Date(),
         updatedAt : new Date()
       },
+      {
+        title : 'Spy x Family',
+        genres : 'action comedy',
+        year : 2021,
+        createdAt : new Date(),
+        updatedAt : new Date()
+      },
+      {
+        title : 'Oshi no Ko',
+        genres : 'drama',
+        year : 2022,
+        createdAt : new Date(),
+        updatedAt : new Date()
+      },
+      {
+        title : 'Youjo Senki',
+        genres : 'isekai thriller',
+        year : 2020,
+        createdAt : new Date(),
+        updatedAt : new Date()
+      },
+      {
+        title : 'Fate',
+        genres : 'isekai',
+        year : 2020,
+        createdAt : new Date(),
+        updatedAt : new Date()
+      },
+      {
+        title : 'Re Zero Hajimekara',
+        genres : 'isekai',
+        year : 2018,
+        createdAt : new Date(),
+        updatedAt : new Date()
+      },
     ]
     
     await queryInterface.bulkInsert('Movies', addMovie, {
