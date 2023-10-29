@@ -10,8 +10,10 @@ router.get('/add', (req, res) => {
         layout : 'layouts/main-layout'
     })
 })
+router.get('/edit/:id', controller.editForm)
 router.get('/:id', controller.detail)
 router.post('/', controller.create)
-router.delete('/delete/:id', controller.delete)
+router.put('/', controller.edit)
+router.delete('/:id', controller.delete)
 
 module.exports = router

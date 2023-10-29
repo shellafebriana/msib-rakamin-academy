@@ -2,21 +2,21 @@
   "development": {
     "username": "postgres",
     "password": "admin",
-    "database": "homework_week9",
+    "database": "movies_database",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
     "username": "postgres",
     "password": "admin",
-    "database": "homework_week9_test",
+    "database": "movies_database_test",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
     "username": "postgres",
     "password": "admin",
-    "database": "homework_week9_production",
+    "database": "movies_database_production",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }
